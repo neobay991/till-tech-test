@@ -8,12 +8,14 @@ describe("Feature Test: ", function () {
   });
 
   describe('Receipt', function(){
-    it('#initialize: When the Receipt object is initialized', function() {
+    it('When the Receipt object is initialized', function() {
       expect(receipt._order).toEqual(" ");
     });
 
     it('#calculateReceipt: Calculates the price of an order', function() {
-      expect(receipt.calculate("Cafe Latte: 4.75, Flat White: 4.75")).toEqual(9.50);
+      receipt.addOrder('Cafe Latte: 4.75');
+      receipt.addOrder('Flat White: 4.75');
+      expect(receipt.calculate('Cafe Latte: 4.75, Flat White: 4.75')).toEqual(9.50);
     });
   });
 });
