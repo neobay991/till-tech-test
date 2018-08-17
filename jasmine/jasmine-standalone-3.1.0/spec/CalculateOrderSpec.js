@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 describe("Unit Test: ", function () {
   var menu;
