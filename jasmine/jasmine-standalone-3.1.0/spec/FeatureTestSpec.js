@@ -1,21 +1,53 @@
 'use-strict';
 
 describe("Feature Test: ", function () {
+  var menu;
+  var order;
+  var calculateOrder;
   var receipt;
 
   beforeEach(function(){
+    menu = new Menu();
+    calculateOrder = new CalculateOrder();
     receipt = new Receipt();
+    order = new Order(menu, receipt, calculateOrder);
   });
 
-  describe('Receipt', function(){
-    it('When the Receipt object is initialized', function() {
-      expect(receipt._order).toEqual(" ");
-    });
-
-    it('#calculateReceipt: Calculates the price of an order', function() {
-      receipt.addOrder('Cafe Latte: 4.75');
-      receipt.addOrder('Flat White: 4.75');
-      expect(receipt.calculate('Cafe Latte: 4.75, Flat White: 4.75')).toEqual(9.50);
+  describe('View menu', function(){
+    it('A User can view a menu to order food from', function() {
+      expect(order.viewMenu()).toEqual([{
+        "shopName": "The Coffee Connection",
+        "address": "123 Lakeside Way",
+        "phone": "16503600708",
+        "prices": [
+          {
+            "Cafe Latte": 4.75,
+            "Flat White": 4.75,
+            "Cappucino": 3.85,
+            "Single Espresso": 2.05,
+            "Double Espresso": 3.75,
+            "Americano": 3.75,
+            "Cortado": 4.55,
+            "Tea": 3.65,
+            "Choc Mudcake": 6.40,
+            "Choc Mousse": 8.20,
+            "Affogato": 14.80,
+            "Tiramisu": 11.40,
+            "Blueberry Muffin": 4.05,
+            "Chocolate Chip Muffin": 4.05,
+            "Muffin Of The Day": 4.55
+          }
+        ]
+      }]);
     });
   });
+
+  describe('View menu', function(){
+    it('A User can create an order', function() {
+      order.addItem('"Cafe Latte": 4.75');
+      order.addItem('"Chocolate Chip Muffin": 4.05');
+      expect(order.viewOrder()).toEqual('"Cafe Latte": 4.75, "Chocolate Chip Muffin": 4.05, Order total: 8.80');
+    });
+  });
+
 });
