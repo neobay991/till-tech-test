@@ -19,13 +19,11 @@
 
   Order.prototype.addOrderBalance = function(item) {
     // split the string to get price
-    var itemPrice = item.split(": ");
-    // var itemPrice2 = itemPrice[itemPrice.length - 1]
+    var itemPrice = item.split(":");
 
     // convert the price string into a float
     var price = parseFloat(itemPrice[itemPrice.length - 1]);
 
-    // var price = parseFloat(Math.round(itemPrice2 * 100) / 100).toFixed(2);
     return customerOrderBalance = calculateOrder.calculate(price);
   }
 
