@@ -7,21 +7,14 @@ describe("Unit Test: ", function () {
 
   beforeEach(function(){
     menu = new Menu();
-    calculateOrder = new CalculateOrder();
-    order = new Order(menu, receipt, calculateOrder);
+    order = new Order(menu);
   });
   describe('Order', function(){
-    describe('#addItem', function(){
-      it('Adds an item to an Order', function() {
-        order.addItem('"Cafe Latte": 4.75');
-        expect(order._customerOrder).toEqual('"Cafe Latte": 4.75');
-      });
-    });
 
-    describe('#calculateReceipt', function(){
-      it('Prints out an ORder', function() {
+    describe('#viewOrder', function(){
+      it('Prints out an Order', function() {
         order.addItem('"Cafe Latte": 4.75');
-        expect(order.viewOrder()).toEqual('"Cafe Latte": 4.75', );
+        expect(order.viewOrder()).toEqual([ '"Cafe Latte": 4.75' ]);
       });
     });
   });

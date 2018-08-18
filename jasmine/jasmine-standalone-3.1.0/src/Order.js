@@ -18,6 +18,5 @@ Order.prototype.viewOrder = function() {
   return customerOrder;
 }
 
-
   exports.Order = Order;
 })(this);
