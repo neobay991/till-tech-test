@@ -10,7 +10,7 @@ describe("Feature Test: ", function () {
     menu = new Menu();
     // calculateOrder = new CalculateOrder();
     // receipt = new Receipt();
-    order = new Order(menu, receipt, calculateOrder);
+    order = new Order(menu);
   });
 
   describe('View menu', function(){
@@ -20,10 +20,10 @@ describe("Feature Test: ", function () {
   });
 
   describe('View menu', function(){
-    xit('A User can create an order', function() {
+    it('A User can create an order', function() {
       order.addItem('"Cafe Latte": 4.75');
       order.addItem('"Chocolate Chip Muffin": 4.05');
-      expect(order.viewOrder()).toEqual('"Cafe Latte": 4.75, "Chocolate Chip Muffin": 4.05, Order total: 8.80');
+      expect(order.viewOrder()).toEqual([ '"Cafe Latte": 4.75', '"Chocolate Chip Muffin": 4.05' ]);
     });
   });
 
