@@ -10,8 +10,10 @@ describe("Unit Test: ", function () {
   describe('CalculateOrder', function(){
 
     describe('#calculate', function(){
-      it('Calculates an Order', function() {
-        expect(calculateOrder.calculate('"Cafe Latte": 4.75', '"Blueberry Muffin": 4.05')).toEqual(8.80);
+      xit('Calculates an Order', function() {
+        calculateOrder.calculate(8.60);
+        calculateOrder.calculate(5.55);
+        expect(calculateOrder.calculate(5.00)).toEqual(19.15);
       });
     });
 
