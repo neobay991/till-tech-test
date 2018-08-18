@@ -4,7 +4,6 @@
   var menu = new Menu();
 
   var customerOrder = [];
-  var customerOrderBalance = 0;
 
   function Order() {}
 
@@ -29,7 +28,7 @@
   }
 
   Order.prototype.viewOrder = function() {
-    return customerOrder + "\nBalance: " + customerOrderBalance;
+    return customerOrder + "\nBalance: " + calculateOrder.calculateOrderWithTax();
   }
 
   exports.Order = Order;
