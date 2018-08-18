@@ -16,14 +16,14 @@ describe("Unit Test: ", function () {
       });
     });
 
-    describe('#calculate', function(){
+    describe('#calculateTax', function(){
       xit('Calculates 8.64% tax on an Order', function() {
         expect(calculateOrder.calculateTax(19.15)).toEqual(1.65);
       });
     });
 
-    describe('#calculate', function(){
-      it('Calculates an Order with 8.64% tax', function() {
+    describe('#calculateOrderWithTax', function(){
+      xit('Calculates an Order with 8.64% tax', function() {
         calculateOrder.calculate(4.75);
         calculateOrder.calculate(4.75);
         calculateOrder.calculate(4.75);
@@ -34,6 +34,13 @@ describe("Unit Test: ", function () {
         calculateOrder.calculate(14.80);
         calculateOrder.calculate(11.40);
         expect(calculateOrder.calculateOrderWithTax()).toEqual(70.94);
+      });
+    });
+
+    describe('#returnTaxAmount', function(){
+      it('Returns total with tax on an Order', function() {
+        calculateOrder.calculateTax(19.15);
+        expect(calculateOrder.returnTaxAmount()).toEqual(1.65);
       });
     });
   });
