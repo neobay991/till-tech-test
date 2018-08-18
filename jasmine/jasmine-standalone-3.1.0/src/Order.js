@@ -24,7 +24,8 @@
     // convert the price string into a float
     var price = parseFloat(itemPrice[itemPrice.length - 1]);
 
-    return customerOrderBalance = calculateOrder.calculate(price);
+    calculateOrder.calculate(price);
+    return calculateOrder.calculateOrderWithTax();
   }
 
   Order.prototype.viewOrder = function() {

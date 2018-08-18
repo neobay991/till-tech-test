@@ -17,7 +17,14 @@ describe("Unit Test: ", function () {
       });
 
       it('Calculates 8.64% tax on an Order', function() {
-        expect(calculateOrder.calculateTax(19.15)).toEqual(1.6);
+        expect(calculateOrder.calculateTax(19.15)).toEqual(1.65);
+      });
+
+      it('Calculates an Order with 8.64% tax', function() {
+        calculateOrder.calculate(8.60);
+        calculateOrder.calculate(5.55);
+        calculateOrder.calculate(5.00);
+        expect(calculateOrder.calculateOrderWithTax()).toEqual(20.80);
       });
     });
 

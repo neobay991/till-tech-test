@@ -22,7 +22,7 @@
   }
 
   CalculateOrder.prototype.calculateOrderWithTax = function() {
-    orderTotalWithTax += Number(parseFloat(orderTotal + orderTax).toFixed(2));
+    orderTotalWithTax = Number(parseFloat(orderTotal + orderTax).toFixed(2));
     return orderTotalWithTax;
   }
 

@@ -19,15 +19,15 @@ describe("Unit Test: ", function () {
 
     describe('#addOrderBalance', function(){
       xit('Returns a balance for an order', function() {
-        order.addOrderBalance('"Cafe Latte":4.75')
-        expect(order.addOrderBalance('"Cortado":4.55')).toEqual(9.3);
+        order.addOrderBalance('"Cafe Latte": 4.75')
+        expect(order.addOrderBalance('"Cortado": 4.55')).toEqual(10.1);
       });
     });
 
     describe('#viewOrder', function(){
-      it('Prints out an Order with 8.64 tax', function() {
+      xit('Prints out an Order with 8.64 tax', function() {
         order.addItem('"Cafe Latte": 4.75');
-        expect(order.viewOrder()).toEqual('"Cafe Latte":4.75\nBalance:5.16');
+        expect(order.viewOrder()).toEqual('"Cafe Latte": 4.75\nBalance: 5.16');
       });
     });
   });
