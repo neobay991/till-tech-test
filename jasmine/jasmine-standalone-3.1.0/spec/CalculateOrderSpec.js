@@ -16,7 +16,7 @@ describe("Unit Test: ", function () {
         expect(calculateOrder.calculate(5.00)).toEqual(19.15);
       });
 
-      xit('Calculates 8.64% tax on an Order', function() {
+      it('Calculates 8.64% tax on an Order', function() {
         expect(calculateOrder.calculateTax(19.15)).toEqual(1.65);
       });
 

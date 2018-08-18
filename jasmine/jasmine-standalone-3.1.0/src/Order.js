@@ -28,7 +28,7 @@
   }
 
   Order.prototype.viewOrder = function() {
-    return customerOrder + "\nBalance: " + calculateOrder.calculateOrderWithTax();
+    return customerOrder + "\nTax: " + calculateOrder.returnTaxAmount() + "\nBalance: " + calculateOrder.calculateOrderWithTax();
   }
 
   exports.Order = Order;

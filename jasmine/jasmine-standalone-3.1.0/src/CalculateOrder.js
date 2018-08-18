@@ -5,9 +5,7 @@
   var orderTax = 0.00;
   var orderTotalWithTax = 0.00;
 
-  function CalculateOrder() {
-
-  }
+  function CalculateOrder() {}
 
   CalculateOrder.prototype.calculate = function(customerOrder) {
     orderTotal += customerOrder;
@@ -24,6 +22,10 @@
   CalculateOrder.prototype.calculateOrderWithTax = function() {
     orderTotalWithTax = Number(parseFloat(orderTotal + orderTax).toFixed(2));
     return orderTotalWithTax;
+  }
+
+  CalculateOrder.prototype.returnTaxAmount = function() {
+    return orderTax;
   }
 
   exports.CalculateOrder = CalculateOrder;
