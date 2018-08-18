@@ -1,11 +1,9 @@
 'use strict';
 
 describe("Unit Test: ", function () {
-  var menu;
   var calculateOrder;
 
   beforeEach(function(){
-    menu = new Menu();
     calculateOrder = new CalculateOrder();
   });
 
