@@ -20,10 +20,10 @@ describe("Feature Test: ", function () {
   });
 
   describe('View order', function(){
-    xit('A User can create an order', function() {
+    xit('A User can view their order', function() {
       order.addItem('"Cafe Latte":4.75');
       order.addItem('"Chocolate Chip Muffin":4.05');
-      expect(order.viewOrder()).toEqual('"Cafe Latte":4.75,"Chocolate Chip Muffin":4.05\nBalance: 8.8');
+      expect(order.viewOrder()).toEqual('"Cafe Latte":4.75,"Chocolate Chip Muffin":4.05\nBalance: 9.21');
     });
   });
 
