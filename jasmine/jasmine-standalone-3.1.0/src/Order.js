@@ -11,14 +11,14 @@
     return menu.getMenu();
   }
 
-  Order.prototype.addItem = function(quatity, item) {
-    customerOrder.push(quatity + " x " + item)
+  Order.prototype.addItem = function(person, quatity, item) {
+    customerOrder.push(person + ": " + quatity + " x " + item)
 
     var x = parseInt(quatity);
     for (var i = 0; i < x; ++i) {
       this.addOrderBalance(item)
     };
-
+    return customerOrder;
   }
 
   Order.prototype.addOrderBalance = function(item) {
