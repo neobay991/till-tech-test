@@ -1,16 +1,10 @@
 'use strict';
 
 describe("Unit Test: ", function () {
-  var menu;
-  var order;
-  var calculateOrder;
   var receipt;
 
   beforeEach(function(){
-    menu = new Menu();
-    calculateOrder = new CalculateOrder();
     receipt = new Receipt();
-    order = new Order(menu, receipt, calculateOrder);
   });
 
   describe('Receipt', function(){
