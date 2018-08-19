@@ -1,10 +1,10 @@
 'use strict';
 
-  function Order(menu, calculateOrder, receipt) {
+  function Order(menu, calculateOrder, receipt, payment) {
     this._calculateOrder = calculateOrder;
     this._menu = menu;
     this._receipt = receipt;
-    this._payment = new Payment();
+    this._payment = payment;
 
     this._customerOrder = [];
     this._customerTable = {

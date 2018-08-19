@@ -15,7 +15,7 @@ describe("Feature Test: ", function () {
     calculateOrder = new CalculateOrder();
     receipt = new Receipt();
     payment = new Payment();
-    order = new Order(menu, calculateOrder, receipt);
+    order = new Order(menu, calculateOrder, receipt, payment);
   });
 
   describe('View menu', function(){
