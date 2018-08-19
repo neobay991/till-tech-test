@@ -38,12 +38,12 @@
   }
 
   Order.prototype.viewReceipt = function() {
-    var output = "";
+    var customerOrderOutput = "";
     for (var i = 0; i < customerOrder.length; i++) {
-       output += customerOrder[i];
+       customerOrderOutput += customerOrder[i];
     }
 
-    return receipt.getReceipt(menu.getMenuHeader(), output, calculateOrder.returnTaxAmount(), calculateOrder.calculateOrderWithTax(), menu.getMenuFooter());
+    return receipt.getReceipt(menu.getMenuHeader(), customerOrderOutput, calculateOrder.returnTaxAmount(), calculateOrder.calculateOrderWithTax(), menu.getMenuFooter());
   }
 
   exports.Order = Order;
