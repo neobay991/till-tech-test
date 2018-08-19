@@ -8,7 +8,7 @@
 
   Receipt.prototype.getReceipt = function(menuHeader, customerOrder, customerOrderTax, customerOrderWithTax, menuFooter) {
 
-    receipt2 = customerOrder + "\n" + "Tax " + customerOrderTax + "\n" + "Total: " +  customerOrderWithTax + "\n" + menuFooter;
+    receipt2 = menuHeader + "\n\n" + customerOrder + "\n" + "Tax " + customerOrderTax + "\n" + "Total: " +  customerOrderWithTax + "\n" + menuFooter;
 
     return receipt2;
   }

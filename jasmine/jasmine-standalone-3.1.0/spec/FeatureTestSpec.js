@@ -31,7 +31,7 @@ describe("Feature Test: ", function () {
     it('A User can add view a receipt of their order', function() {
       order.addItem('"Jane"', 1, '"Cafe Latte": 4.75');
       order.addItem('"John"', 2, '"Chocolate Chip Muffin": 4.05');
-      expect(order.viewReceipt()).toEqual('"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax 1.11\nTotal: 13.96\nThank you!');
+      expect(order.viewReceipt()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\n"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax 1.11\nTotal: 13.96\nThank you!');
     });
   });
 
