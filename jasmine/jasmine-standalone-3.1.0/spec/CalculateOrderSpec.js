@@ -38,7 +38,7 @@ describe("Unit Test: ", function () {
     });
 
     describe('#returnTaxAmount', function(){
-      it('Returns total with tax on an Order', function() {
+      xit('Returns total with tax on an Order', function() {
         calculateOrder.calculateTax(19.15);
         expect(calculateOrder.returnTaxAmount()).toEqual(1.65);
       });

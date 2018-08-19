@@ -26,8 +26,8 @@ describe("Unit Test: ", function () {
 
     describe('#viewOrder', function(){
       xit('Prints out an Order with 8.64 tax', function() {
-        order.addItem('"Cafe Latte": 4.75');
-        expect(order.viewOrder()).toEqual('"Cafe Latte": 4.75\nTax: 0.41\nBalance: 5.16');
+        order.addItem(1, '"Cafe Latte": 4.75');
+        expect(order.viewOrder()).toEqual('1 x "Cafe Latte": 4.75\nTax: 0.41\nBalance: 5.16');
       });
     });
   });
