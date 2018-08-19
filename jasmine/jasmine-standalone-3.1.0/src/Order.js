@@ -1,9 +1,9 @@
 'use strict';
 
-  function Order(menu, calculateOrder) {
+  function Order(menu, calculateOrder, receipt) {
     this.calculateOrder = calculateOrder;
     this.menu = menu;
-    var receipt = new Receipt();
+    this.receipt = receipt;
 
     this.customerOrder = [];
   }
@@ -39,9 +39,9 @@
 
   Order.prototype.viewReceipt = function() {
     var customerOrderOutput = "";
-    for (var i = 0; i < customerOrder.length; i++) {
-       customerOrderOutput += customerOrder[i];
+    for (var i = 0; i < this.customerOrder.length; i++) {
+       customerOrderOutput += this.customerOrder[i];
     }
 
-    return receipt.getReceipt(menu.getMenuHeader(), customerOrderOutput, this.calculateOrder.returnTaxAmount(), this.calculateOrder.calculateOrderWithTax(), menu.getMenuFooter());
+    return this.receipt.getReceipt(this.menu.getMenuHeader(), customerOrderOutput, this.calculateOrder.returnTaxAmount(), this.calculateOrder.calculateOrderWithTax(), this.menu.getMenuFooter());
   }

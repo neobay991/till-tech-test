@@ -2,14 +2,17 @@
 
 describe("Unit Test: ", function () {
   var menu;
-  var order;
   var calculateOrder;
+  var receipt;
+  var order;
 
   beforeEach(function(){
-    menu = jasmine.createSpyObj('Menu', ['getMenu']);
+    menu = jasmine.createSpyObj('Menu', ['getMenu', 'getMenuHeader', 'getMenuFooter']);
     calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate', 'calculateOrderWithTax', 'returnTaxAmount']);
+    receipt = jasmine.createSpyObj('Receipt', ['getReceipt']);
+    // receipt = new Receipt();
     // calculateOrder = new CalculateOrder();
-    order = new Order(menu, calculateOrder);
+    order = new Order(menu, calculateOrder, receipt);
   });
   describe('Order', function(){
     describe('#viewMenu', function(){
@@ -35,6 +38,19 @@ describe("Unit Test: ", function () {
         calculateOrder.calculateOrderWithTax.and.returnValue(5.16);
         order.addItem("Jane", 1, '"Cafe Latte": 4.75');
         expect(order.viewOrder()).toEqual('Jane: 1 x "Cafe Latte": 4.75\n\nTax: 0.41\nBalance: 5.16');
+      });
+    });
+
+    describe('#viewReceipt', function(){
+      it('Prints out a Receipt', function() {
+        var menuHeader = 'The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708'
+        var customerOrder = '"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n'
+        var customerOrderTax = 1.11;
+        var customerOrderWithTax = 13.96;
+        var menuFooter = 'Thank you!'
+        var receiptOutput = menuHeader + "\n\n" + customerOrder + "\n" + "Tax " + customerOrderTax + "\n" + "Total: " +  customerOrderWithTax + "\n" + menuFooter;
+        receipt.getReceipt.and.returnValue(receiptOutput);
+        expect(order.viewReceipt()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\n"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax 1.11\nTotal: 13.96\nThank you!');
       });
     });
   });
