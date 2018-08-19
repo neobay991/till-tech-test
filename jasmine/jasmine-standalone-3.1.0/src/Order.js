@@ -11,9 +11,14 @@
     return menu.getMenu();
   }
 
-  Order.prototype.addItem = function(item) {
-    customerOrder.push(item);
-    this.addOrderBalance(item)
+  Order.prototype.addItem = function(quatity, item) {
+    customerOrder.push(quatity + " x " + item)
+
+    var x = parseInt(quatity);
+    for (var i = 0; i < x; ++i) {
+      this.addOrderBalance(item)
+    };
+
   }
 
   Order.prototype.addOrderBalance = function(item) {
