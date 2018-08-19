@@ -7,19 +7,12 @@ function Payment(){
 }
 
 Payment.prototype.processPayment = function(bill, payment) {
-  var payment_confirmation = "Thank you for ypur payment!"
-  var payment_error = "Error: The order total is more than your payment please check your payment amount"
-
-    if (payment > bill) {
+    if (payment >= bill) {
       this.savePayment(payment);
       this.change(payment, bill);
       this._customerPaymentProcessed = true;
-
-    } else if (payment < bill) {
-        this._customerPaymentProcessed = false;
     } else {
-        this.savePayment(payment);
-        this._customerPaymentProcessed = true;
+        this._customerPaymentProcessed = false;
     };
 
     return this._customerPaymentProcessed;
