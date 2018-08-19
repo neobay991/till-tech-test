@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 describe("Unit Test: ", function () {
   var menu;
@@ -16,12 +16,12 @@ describe("Unit Test: ", function () {
   describe('Receipt', function(){
 
     describe('#printReceipt', function(){
-      it('Prints out a receipt', function() {
-        order._customerOrder = ['{Cafe Latte: 4.75}, {Flat White: 4.75}'];
-        expect(order.getReceipt()).toEqual(9.50);
+      xit('Prints out a receipt', function() {
+        order._customerOrder = ['{Cafe Latte:4.75}, {Flat White:4.75}'];
+        expect(receipt.getReceipt()).toEqual();
       });
     });
-    
+
   });
 
 });
