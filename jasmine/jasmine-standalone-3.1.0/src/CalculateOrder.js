@@ -1,32 +1,28 @@
 'use strict';
 
-(function(exports){
-  var orderTotal = 0.00;
-  var orderTax = 0.00;
-  var orderTotalWithTax = 0.00;
+function CalculateOrder() {
+  this._orderTotal = 0.00;
+  this.orderTax = 0.00;
+  this.orderTotalWithTax = 0.00;
+}
 
-  function CalculateOrder() {}
+CalculateOrder.prototype.calculate = function(customerOrder) {
+  this._orderTotal += customerOrder;
+  this.calculateTax(this._orderTotal);
+  return this._orderTotal;
+}
 
-  CalculateOrder.prototype.calculate = function(customerOrder) {
-    orderTotal += customerOrder;
-    this.calculateTax(orderTotal);
-    return orderTotal;
-  }
+CalculateOrder.prototype.calculateTax = function(orderTotal) {
+  // Use Number to convert the string into a Number after calling toFixed();
+  this.orderTax = Number(parseFloat(orderTotal * 0.0864).toFixed(2));
+  return this.orderTax;
+}
 
-  CalculateOrder.prototype.calculateTax = function(orderTotal) {
-    // Use Number to convert the string into a Number after calling toFixed();
-    orderTax = Number(parseFloat(orderTotal * 0.0864).toFixed(2));
-    return orderTax;
-  }
+CalculateOrder.prototype.calculateOrderWithTax = function() {
+  this.orderTotalWithTax = Number(parseFloat(this._orderTotal + this.orderTax).toFixed(2));
+  return this.orderTotalWithTax;
+}
 
-  CalculateOrder.prototype.calculateOrderWithTax = function() {
-    orderTotalWithTax = Number(parseFloat(orderTotal + orderTax).toFixed(2));
-    return orderTotalWithTax;
-  }
-
-  CalculateOrder.prototype.returnTaxAmount = function() {
-    return orderTax;
-  }
-
-  exports.CalculateOrder = CalculateOrder;
-})(this);
+CalculateOrder.prototype.returnTaxAmount = function() {
+  return this.orderTax;
+}
