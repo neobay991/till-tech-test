@@ -37,7 +37,7 @@
     return this.customerOrder + "\nTax: " + this.calculateOrder.returnTaxAmount() + "\nBalance: " + this.calculateOrder.calculateOrderWithTax();
   }
 
-  Order.prototype.viewReceipt = function() {
+  Order.prototype.submitOrder = function() {
     var customerOrderOutput = "";
     for (var i = 0; i < this.customerOrder.length; i++) {
        customerOrderOutput += this.customerOrder[i];

@@ -32,7 +32,7 @@ describe("Unit Test: ", function () {
     });
 
     describe('#viewOrder', function(){
-      it('Prints out an Order with 8.64 tax', function() {
+      it('Prints out an order with 8.64 tax', function() {
         calculateOrder.returnTaxAmount.and.returnValue(0.41);
         calculateOrder.calculateOrderWithTax.and.returnValue(5.16);
         order.addItem("Jane", 1, '"Cafe Latte": 4.75');
@@ -40,8 +40,8 @@ describe("Unit Test: ", function () {
       });
     });
 
-    describe('#viewReceipt', function(){
-      it('Prints out a Receipt', function() {
+    describe('#submitOrder', function(){
+      it('Submits order and prints out a receipt', function() {
         var menuHeader = 'The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708'
         var customerOrder = '"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n'
         var customerOrderTax = 1.11;
@@ -49,7 +49,7 @@ describe("Unit Test: ", function () {
         var menuFooter = 'Thank you!'
         var receiptOutput = menuHeader + "\n\n" + customerOrder + "\n" + "Tax " + customerOrderTax + "\n" + "Total: " +  customerOrderWithTax + "\n" + menuFooter;
         receipt.getReceipt.and.returnValue(receiptOutput);
-        expect(order.viewReceipt()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\n"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax 1.11\nTotal: 13.96\nThank you!');
+        expect(order.submitOrder()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\n"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax 1.11\nTotal: 13.96\nThank you!');
       });
     });
   });
