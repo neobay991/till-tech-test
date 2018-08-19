@@ -19,7 +19,7 @@ describe("Unit Test: ", function () {
         var customerOrderTax = 1.11;
         var customerOrderWithTax = 13.96;
         var menuFooter = 'Thank you!'
-        expect(receipt.getReceipt(menuHeader, customerTableNumber, customerTableCustomers, customerTableCustomersNames, customerOrder, customerOrderTax, customerOrderWithTax, menuFooter)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax 1.11\nTotal: 13.96\nThank you!');
+        expect(receipt.getReceipt(menuHeader, customerTableNumber, customerTableCustomers, customerTableCustomersNames, customerOrder, customerOrderTax, customerOrderWithTax, menuFooter)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nThank you!');
       });
     });
 

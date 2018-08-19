@@ -47,7 +47,7 @@
   }
 
   Order.prototype.viewOrder = function() {
-    return "Table: " + this._customerTable.number + " / [" + this._customerTable.customers + "]\n" + this._customerTable.customers_names + "\n" + this._customerOrder + "\nTax: " + this._calculateOrder.returnTaxAmount() + "\nBalance: " + this._calculateOrder.calculateOrderWithTax();
+    return "Table: " + this._customerTable.number + " / [" + this._customerTable.customers + "]\n" + this._customerTable.customers_names + "\n" + this._customerOrder + "\nTax: " + "$" + this._calculateOrder.returnTaxAmount() + "\nTotal: " + "$" + this._calculateOrder.calculateOrderWithTax();
   }
 
   Order.prototype.submitOrder = function() {
