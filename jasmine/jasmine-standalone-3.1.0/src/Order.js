@@ -1,25 +1,25 @@
 'use strict';
-(function(exports){
-  var calculateOrder = new CalculateOrder();
-  var menu = new Menu();
-  var receipt = new Receipt();
 
-  var customerOrder = [];
+  function Order(menu, calculateOrder) {
+    this.calculateOrder = calculateOrder;
+    this.menu = menu;
+    var receipt = new Receipt();
 
-  function Order() {}
+    this.customerOrder = [];
+  }
 
   Order.prototype.viewMenu = function() {
-    return menu.getMenu();
+    return this.menu.getMenu();
   }
 
   Order.prototype.addItem = function(person, quatity, item) {
-    customerOrder.push(person + ": " + quatity + " x " + item + "\n")
+    this.customerOrder.push(person + ": " + quatity + " x " + item + "\n")
 
     var x = parseInt(quatity);
     for (var i = 0; i < x; ++i) {
       this.addOrderBalance(item)
     };
-    return customerOrder;
+    return this.customerOrder;
   }
 
   Order.prototype.addOrderBalance = function(item) {
@@ -29,12 +29,12 @@
     // convert the price string into a float
     var price = parseFloat(itemPrice[itemPrice.length - 1]);
 
-    calculateOrder.calculate(price);
-    return calculateOrder.calculateOrderWithTax();
+    this.calculateOrder.calculate(price);
+    return this.calculateOrder.calculateOrderWithTax();
   }
 
   Order.prototype.viewOrder = function() {
-    return customerOrder + "\nTax: " + calculateOrder.returnTaxAmount() + "\nBalance: " + calculateOrder.calculateOrderWithTax();
+    return this.customerOrder + "\nTax: " + this.calculateOrder.returnTaxAmount() + "\nBalance: " + this.calculateOrder.calculateOrderWithTax();
   }
 
   Order.prototype.viewReceipt = function() {
@@ -43,8 +43,5 @@
        customerOrderOutput += customerOrder[i];
     }
 
-    return receipt.getReceipt(menu.getMenuHeader(), customerOrderOutput, calculateOrder.returnTaxAmount(), calculateOrder.calculateOrderWithTax(), menu.getMenuFooter());
+    return receipt.getReceipt(menu.getMenuHeader(), customerOrderOutput, this.calculateOrder.returnTaxAmount(), this.calculateOrder.calculateOrderWithTax(), menu.getMenuFooter());
   }
-
-  exports.Order = Order;
-})(this);
