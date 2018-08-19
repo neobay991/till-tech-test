@@ -5,21 +5,34 @@
     this._menu = menu;
     this._receipt = receipt;
 
-    this.customerOrder = [];
+    this._customerOrder = [];
+    this._customerTable = {
+      number: 0,
+      customers: 0,
+      customers_names: "",
+    };
+    // this._customerTable = 0;
+    // this._customerOrderPeople = 0;
   }
 
   Order.prototype.viewMenu = function() {
     return this._menu.getMenu();
   }
 
-  Order.prototype.addItem = function(person, quatity, item) {
-    this.customerOrder.push(person + ": " + quatity + " x " + item + "\n")
+  Order.prototype.addTable = function(table_no, total_customers, customer_names) {
+    this._customerTable.number = table_no;
+    this._customerTable.customers = total_customers;
+    this._customerTable.customers_names = customer_names;
+  }
 
-    var x = parseInt(quatity);
+  Order.prototype.addItem = function(quantity, item) {
+    this._customerOrder.push(quantity + " x " + item + "\n");
+
+    var x = parseInt(quantity);
     for (var i = 0; i < x; ++i) {
       this.addOrderBalance(item)
     };
-    return this.customerOrder;
+    return this._customerOrder;
   }
 
   Order.prototype.addOrderBalance = function(item) {
@@ -34,14 +47,14 @@
   }
 
   Order.prototype.viewOrder = function() {
-    return this.customerOrder + "\nTax: " + this._calculateOrder.returnTaxAmount() + "\nBalance: " + this._calculateOrder.calculateOrderWithTax();
+    return "Table: " + this._customerTable.number + " / [" + this._customerTable.customers + "]\n" + this._customerTable.customers_names + "\n" + this._customerOrder + "\nTax: " + this._calculateOrder.returnTaxAmount() + "\nBalance: " + this._calculateOrder.calculateOrderWithTax();
   }
 
   Order.prototype.submitOrder = function() {
     var customerOrderOutput = "";
-    for (var i = 0; i < this.customerOrder.length; i++) {
-       customerOrderOutput += this.customerOrder[i];
+    for (var i = 0; i < this._customerOrder.length; i++) {
+       customerOrderOutput += this._customerOrder[i];
     }
 
-    return this._receipt.getReceipt(this._menu.getMenuHeader(), customerOrderOutput, this._calculateOrder.returnTaxAmount(), this._calculateOrder.calculateOrderWithTax(), this._menu.getMenuFooter());
+    return this._receipt.getReceipt(this._menu.getMenuHeader(), this._customerTable.number, this._customerTable.customers, this._customerTable.customers_names, customerOrderOutput, this._calculateOrder.returnTaxAmount(), this._calculateOrder.calculateOrderWithTax(), this._menu.getMenuFooter());
   }
