@@ -4,6 +4,7 @@
     this._calculateOrder = calculateOrder;
     this._menu = menu;
     this._receipt = receipt;
+    this._payment = new Payment();
 
     this._customerOrder = [];
     this._customerTable = {
@@ -50,11 +51,15 @@
     return "Table: " + this._customerTable.number + " / [" + this._customerTable.customers + "]\n" + this._customerTable.customers_names + "\n" + this._customerOrder + "\nTax: " + "$" + this._calculateOrder.returnTaxAmount() + "\nTotal: " + "$" + this._calculateOrder.calculateOrderWithTax();
   }
 
+  Order.prototype.makePayment = function(bill, payment) {
+    return this._payment.processPayment(bill, payment);
+  }
+
   Order.prototype.submitOrder = function() {
     var customerOrderOutput = "";
     for (var i = 0; i < this._customerOrder.length; i++) {
        customerOrderOutput += this._customerOrder[i];
     }
 
-    return this._receipt.getReceipt(this._menu.getMenuHeader(), this._customerTable.number, this._customerTable.customers, this._customerTable.customers_names, customerOrderOutput, this._calculateOrder.returnTaxAmount(), this._calculateOrder.calculateOrderWithTax(), this._menu.getMenuFooter());
+    return this._receipt.getReceipt(this._menu.getMenuHeader(), this._customerTable.number, this._customerTable.customers, this._customerTable.customers_names, customerOrderOutput, this._calculateOrder.returnTaxAmount(), this._calculateOrder.calculateOrderWithTax(), this._payment._customerPayment, this._payment._customerPaymentChange, this._menu.getMenuFooter());
   }
