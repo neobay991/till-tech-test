@@ -7,20 +7,23 @@ describe("Feature Test: ", function () {
   var receipt;
 
   beforeEach(function(){
-    menu = new Menu();
-    calculateOrder = new CalculateOrder();
-    receipt = new Receipt();
-    order = new Order(menu, calculateOrder);
+    menu = jasmine.createSpyObj('Menu', ['getMenu', 'getMenuHeader', 'getMenuFooter']);
+    calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate', 'calculateOrderWithTax', 'returnTaxAmount']);
+    receipt = jasmine.createSpyObj('Receipt', ['getReceipt']);
+    order = new Order(menu, calculateOrder, receipt);
   });
 
   describe('View menu', function(){
     it('A User can view a menu to order food from', function() {
+      menu.getMenu.and.returnValue('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n \n{"Cafe Latte":4.75,"Flat White":4.75,"Cappucino":3.85,"Single Espresso":2.05,"Double Espresso":3.75,"Americano":3.75,"Cortado":4.55,"Tea":3.65,"Choc Mudcake":6.4,"Choc Mousse":8.2,"Affogato":14.8,"Tiramisu":11.4,"Blueberry Muffin":4.05,"Chocolate Chip Muffin":4.05,"Muffin Of The Day":4.55}');
       expect(order.viewMenu()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n \n{"Cafe Latte":4.75,"Flat White":4.75,"Cappucino":3.85,"Single Espresso":2.05,"Double Espresso":3.75,"Americano":3.75,"Cortado":4.55,"Tea":3.65,"Choc Mudcake":6.4,"Choc Mousse":8.2,"Affogato":14.8,"Tiramisu":11.4,"Blueberry Muffin":4.05,"Chocolate Chip Muffin":4.05,"Muffin Of The Day":4.55}');
     });
   });
 
   describe('View order', function(){
-    xit('A User can add users, quatity and view their order', function() {
+    it('A User can add users, quatity and view their order', function() {
+      calculateOrder.returnTaxAmount.and.returnValue(1.11);
+      calculateOrder.calculateOrderWithTax.and.returnValue(13.96);
       order.addItem('"Jane"', 1, '"Cafe Latte": 4.75');
       order.addItem('"John"', 2, '"Chocolate Chip Muffin": 4.05');
       expect(order.viewOrder()).toEqual('"Jane": 1 x "Cafe Latte": 4.75\n,"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax: 1.11\nBalance: 13.96');
@@ -28,9 +31,16 @@ describe("Feature Test: ", function () {
   });
 
   describe('View receipt', function(){
-    xit('A User can add view a receipt of their order', function() {
+    it('A User can add view a receipt of their order', function() {
       order.addItem('"Jane"', 1, '"Cafe Latte": 4.75');
       order.addItem('"John"', 2, '"Chocolate Chip Muffin": 4.05');
+      var menuHeader = 'The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708'
+      var customerOrder = '"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n'
+      var customerOrderTax = 1.11;
+      var customerOrderWithTax = 13.96;
+      var menuFooter = 'Thank you!'
+      var receiptOutput = menuHeader + "\n\n" + customerOrder + "\n" + "Tax " + customerOrderTax + "\n" + "Total: " +  customerOrderWithTax + "\n" + menuFooter;
+      receipt.getReceipt.and.returnValue(receiptOutput);
       expect(order.viewReceipt()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\n"Jane": 1 x "Cafe Latte": 4.75\n"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax 1.11\nTotal: 13.96\nThank you!');
     });
   });
