@@ -9,7 +9,7 @@ describe("Feature Test: ", function () {
   beforeEach(function(){
     menu = new Menu();
     calculateOrder = new CalculateOrder();
-    // receipt = new Receipt();
+    receipt = new Receipt();
     order = new Order(menu, calculateOrder);
   });
 
@@ -28,10 +28,10 @@ describe("Feature Test: ", function () {
   });
 
   describe('View receipt', function(){
-    xit('A User can add view a receipt of their order', function() {
-      order.addItem(1, '"Cafe Latte": 4.75');
-      order.addItem(2, '"Chocolate Chip Muffin": 4.05');
-      expect(order.viewReceipt()).toEqual('The Coffee Connection\n \n123 Lakeside Way\nPhone: +1 (650) 360-0708\n \n{"Cafe Latte":4.75,"Flat White":4.75,"Cappucino":3.85,"Single Espresso":2.05,"Double Espresso":3.75,"Americano":3.75,"Cortado":4.55,"Tea":3.65,"Choc Mudcake":6.4,"Choc Mousse":8.2,"Affogato":14.8,"Tiramisu":11.4,"Blueberry Muffin":4.05,"Chocolate Chip Muffin":4.05,"Muffin Of The Day":4.55}');
+    it('A User can add view a receipt of their order', function() {
+      order.addItem('"Jane"', 1, '"Cafe Latte": 4.75');
+      order.addItem('"John"', 2, '"Chocolate Chip Muffin": 4.05');
+      expect(order.viewReceipt()).toEqual('The Coffee Connection\n \n123 Lakeside Way\nPhone: +1 (650) 360-0708\n \n"Jane": 1 x "Cafe Latte": 4.75,\n"John": 2 x "Chocolate Chip Muffin": 4.05\nTax: 1.11\nBalance: 13.96');
     });
   });
 
