@@ -1,7 +1,7 @@
 'use strict';
 
 function Receipt(){
-    this._receiptOutput;
+  this._receiptOutput;
 }
 
 Receipt.prototype.getReceipt = function(menuHeader, customerOrder,

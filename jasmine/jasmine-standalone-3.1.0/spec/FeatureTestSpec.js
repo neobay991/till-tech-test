@@ -24,9 +24,9 @@ describe("Feature Test: ", function () {
 
   describe('View order', function(){
     it('A User can add users, quatity and view their order', function() {
-      order.addItem('"Jane"', 1, '"Cafe Latte": 4.75');
-      order.addItem('"John"', 2, '"Chocolate Chip Muffin": 4.05');
-      expect(order.viewOrder()).toEqual('"Jane": 1 x "Cafe Latte": 4.75\n,"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax: 1.11\nBalance: 13.96');
+      order.addItem(1, 2, '"Jane"', 1, '"Cafe Latte": 4.75');
+      order.addItem(1, 2, '"John"', 2, '"Chocolate Chip Muffin": 4.05');
+      expect(order.viewOrder()).toEqual('Table: 1 / [2]\nJane, John\n"Jane": 1 x "Cafe Latte": 4.75\n,"John": 2 x "Chocolate Chip Muffin": 4.05\n\nTax: 1.11\nBalance: 13.96');
     });
   });
 
