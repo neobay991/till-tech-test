@@ -63,6 +63,7 @@ describe("Unit Test: ", function () {
 
     describe('#submitOrder', function(){
       it('Submits order and prints out a receipt', function() {
+        order._customerOrder = ['1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n']
         var menuHeader = 'The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708'
         var customerTableNumber = '1'
         var customerTableCustomers = '2';

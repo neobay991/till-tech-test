@@ -57,13 +57,23 @@
 
   Order.prototype.submitOrder = function() {
     var customerOrderOutput = "";
-    for (var i = 0; i < this._customerOrder.length; i++) {
-       customerOrderOutput += this._customerOrder[i];
-    }
+    if (this._customerOrder != [] || this._customerOrder != nil ) {
+      for (var i = 0; i < this._customerOrder.length; i++) {
+         customerOrderOutput += this._customerOrder[i];
+      };
+    } else {
+      return "Error: Please add something to your order"
+    };
 
     return this.viewReceipt(customerOrderOutput);
   }
 
   Order.prototype.viewReceipt = function(customerOrderOutput) {
-    return this._receipt.getReceipt(this._menu.getMenuHeader(), this._customerTable.number, this._customerTable.customers, this._customerTable.customers_names, customerOrderOutput, this._calculateOrder.returnTaxAmount(), this._calculateOrder.calculateOrderWithTax(), this._payment._customerPayment, this._payment._customerPaymentChange, this._menu.getMenuFooter());
+    return this._receipt.getReceipt(this._menu.getMenuHeader(),
+    this._customerTable.number, this._customerTable.customers,
+    this._customerTable.customers_names, customerOrderOutput,
+    this._calculateOrder.returnTaxAmount(),
+    this._calculateOrder.calculateOrderWithTax(),
+    this._payment._customerPayment, this._payment._customerPaymentChange,
+    this._menu.getMenuFooter());
   }
