@@ -61,5 +61,9 @@
        customerOrderOutput += this._customerOrder[i];
     }
 
+    return this.viewReceipt(customerOrderOutput);
+  }
+
+  Order.prototype.viewReceipt = function(customerOrderOutput) {
     return this._receipt.getReceipt(this._menu.getMenuHeader(), this._customerTable.number, this._customerTable.customers, this._customerTable.customers_names, customerOrderOutput, this._calculateOrder.returnTaxAmount(), this._calculateOrder.calculateOrderWithTax(), this._payment._customerPayment, this._payment._customerPaymentChange, this._menu.getMenuFooter());
   }
