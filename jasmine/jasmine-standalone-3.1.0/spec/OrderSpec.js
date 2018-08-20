@@ -11,7 +11,7 @@ describe("Unit Test: ", function () {
     menu = jasmine.createSpyObj('Menu', ['getMenu', 'getMenuHeader', 'getMenuFooter']);
     calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate', 'calculateOrderWithTax', 'returnTaxAmount']);
     receipt = jasmine.createSpyObj('Receipt', ['getReceipt']);
-    payment = jasmine.createSpyObj('Payment', ['savePayment', 'change']);
+    payment = jasmine.createSpyObj('Payment', ['savePayment', 'change', 'processPayment']);
 
     // receipt = new Receipt();
     // calculateOrder = new CalculateOrder();
@@ -41,6 +41,23 @@ describe("Unit Test: ", function () {
         order.addTable(1, 1, "Jane");
         order.addItem(1, '"Cafe Latte": 4.75');
         expect(order.viewOrder()).toEqual('Table: 1 / [1]\nJane\n1 x "Cafe Latte": 4.75\n\nTax: $0.41\nTotal: $5.16');
+      });
+    });
+
+    describe('#makePayment', function(){
+      it('Processes a payment and returns true if the payment amount is more than the balance', function() {
+        payment.processPayment.and.returnValue(true);
+        expect(order.makePayment(10, 15)).toEqual(true);
+      });
+
+      it('Processes a payment and returns true if the payment amount is equal to the balance', function() {
+        payment.processPayment.and.returnValue(true);
+        expect(order.makePayment(10, 10)).toEqual(true);
+      });
+
+      it('Processes a payment and returns false if the payment amount is less than the balance', function() {
+        payment.processPayment.and.returnValue(false);
+        expect(order.makePayment(10, 5)).toEqual(false);
       });
     });
 
