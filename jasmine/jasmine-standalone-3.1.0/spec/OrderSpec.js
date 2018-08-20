@@ -60,7 +60,7 @@ describe("Unit Test: ", function () {
 
     describe('#submitOrder', function(){
       it('Submits order and prints out a receipt', function() {
-        order._customerOrder = ['1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n']
+        // order._customerOrder = ['1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n']
         var menuHeader = 'The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708'
         var customerTableNumber = '1'
         var customerTableCustomers = '2';
@@ -75,12 +75,18 @@ describe("Unit Test: ", function () {
         customerOrderTax + "\n" + "Total: " + "$" +  customerOrderWithTax +
         "\n" + "Cash: " + customerPayment + "\nChange: " + "$" + customerPaymentChange + "\n" + menuFooter;
         receipt.getReceipt.and.returnValue(receiptOutput);
-        expect(order.submitOrder()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
+        expect(order.submitOrder(13.96, 15.00)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
       });
 
       it('Throws an error if there is no item in the order basket', function() {
         order._customerOrder = [];
-        expect(order.submitOrder()).toEqual("Error: Please add something to your order");
+        payment.processPayment.and.returnValue(false);
+        expect(order.submitOrder(13.96, 15.00)).toEqual("Error: Please review your order. You have either not added any items to your order or your payment was not successful");
+      });
+
+      it('Throws an error if the payment was not successfully processed', function() {
+        payment.processPayment.and.returnValue(false);
+        expect(order.submitOrder(13.96, 15.00)).toEqual("Error: Please review your order. You have either not added any items to your order or your payment was not successful");
       });
 
     });

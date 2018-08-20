@@ -55,15 +55,16 @@
     return this._payment.processPayment(bill, payment);
   }
 
-  Order.prototype.submitOrder = function() {
+  Order.prototype.submitOrder = function(bill, payment) {
+    this.makePayment(bill, payment);
     var customerOrderOutput = "";
-    if (this._customerOrder.length != 0) {
+    if (this._customerOrder.length != 0  || this.makePayment() != false) {
       for (var i = 0; i < this._customerOrder.length; i++) {
          customerOrderOutput += this._customerOrder[i];
       };
     return this.viewReceipt(customerOrderOutput);
     } else {
-      return 'Error: Please add something to your order'
+      return 'Error: Please review your order. You have either not added any items to your order or your payment was not successful'
     };
   }
 
