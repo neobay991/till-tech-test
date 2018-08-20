@@ -40,39 +40,21 @@ describe("Feature Test: ", function () {
       order.addItem(2, '"Chocolate Chip Muffin": 4.05');
       order.viewOrder();
       order.makePayment(13.96, 15.00);
-      // var menuHeader = 'The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708'
-      // var customerTableNumber = 'Table: 1 / '
-      // var customerTableCustomers = '[2]';
-      // var customerTableCustomersNames = 'Jane, John'
-      // var customerOrder = '1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n'
-      // var customerOrderTax = 1.11;
-      // var customerOrderWithTax = 13.96;
-      // // var customerPayment = 15.00;
-      // // var customerPaymentChange =
-      // var menuFooter = 'Thank you!'
-      // var receiptOutput = menuHeader + "\n\n" + customerTableNumber + customerTableCustomers + "\n" + customerTableCustomersNames + "\n" + customerOrder + "\n" + "Tax " + "$" + customerOrderTax + "\n" + "Total: " + "$" + customerOrderWithTax + "\n" + menuFooter;
-      // receipt.getReceipt(receiptOutput);
       expect(order.submitOrder()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
     });
   });
 
-  describe('View receipt', function(){
+  describe('Submit order', function(){
     it('A User can view a receipt of their order', function() {
       order.addTable(1, 2, "Jane, John");
       order.addItem(1, '"Cafe Latte": 4.75');
       order.addItem(2, '"Chocolate Chip Muffin": 4.05');
       order.makePayment(13.96, 15.00);
-      // var menuHeader = 'The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708'
-      // var customerTableNumber = 'Table: 1 / '
-      // var customerTableCustomers = '[2]';
-      // var customerTableCustomersNames = 'Jane, John'
-      // var customerOrder = '1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n'
-      // var customerOrderTax = 1.11;
-      // var customerOrderWithTax = 13.96;
-      // var menuFooter = 'Thank you!'
-      // var receiptOutput = menuHeader + "\n\n" + customerTableNumber + customerTableCustomers + "\n" + customerTableCustomersNames + "\n" + customerOrder + "\n" + "Tax " + "$" + customerOrderTax + "\n" + "Total: " + "$" +  customerOrderWithTax + "\n" + menuFooter;
-      // receipt.getReceipt(receiptOutput);
       expect(order.submitOrder()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
+    });
+
+    it('A User cannot submit an order if there is no item in the order basket', function() {
+      expect(order.submitOrder()).toEqual('Error: Please add something to your order');
     });
   });
 

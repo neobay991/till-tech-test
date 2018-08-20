@@ -57,15 +57,14 @@
 
   Order.prototype.submitOrder = function() {
     var customerOrderOutput = "";
-    if (this._customerOrder != [] || this._customerOrder != nil ) {
+    if (this._customerOrder.length != 0) {
       for (var i = 0; i < this._customerOrder.length; i++) {
          customerOrderOutput += this._customerOrder[i];
       };
-    } else {
-      return "Error: Please add something to your order"
-    };
-
     return this.viewReceipt(customerOrderOutput);
+    } else {
+      return 'Error: Please add something to your order'
+    };
   }
 
   Order.prototype.viewReceipt = function(customerOrderOutput) {

@@ -12,9 +12,6 @@ describe("Unit Test: ", function () {
     calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate', 'calculateOrderWithTax', 'returnTaxAmount']);
     receipt = jasmine.createSpyObj('Receipt', ['getReceipt']);
     payment = jasmine.createSpyObj('Payment', ['savePayment', 'change', 'processPayment']);
-
-    // receipt = new Receipt();
-    // calculateOrder = new CalculateOrder();
     order = new Order(menu, calculateOrder, receipt, payment);
   });
   describe('Order', function(){
@@ -80,6 +77,12 @@ describe("Unit Test: ", function () {
         receipt.getReceipt.and.returnValue(receiptOutput);
         expect(order.submitOrder()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
       });
+
+      it('Throws an error if there is no item in the order basket', function() {
+        order._customerOrder = [];
+        expect(order.submitOrder()).toEqual("Error: Please add something to your order");
+      });
+
     });
   });
 });
