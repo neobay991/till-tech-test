@@ -13,15 +13,9 @@ Payment.prototype.processPayment = function(bill, payment) {
       this._customerPaymentProcessed = true;
     } else {
         this._customerPaymentProcessed = false;
-    };
+    }
 
     return this._customerPaymentProcessed;
-    //
-    // if (this._customerPaymentProcessed === true) {
-    //   return "Bill: " + bill + " " + " Payment amount: " + this._customerPayment + " Change: " + this._customerPaymentChange + " " + payment_confirmation;
-    // } else {
-    //   return payment_error;
-    // }
 }
 
 Payment.prototype.savePayment = function(payment) {

@@ -12,8 +12,6 @@
       customers: 0,
       customers_names: "",
     };
-    // this._customerTable = 0;
-    // this._customerOrderPeople = 0;
   }
 
   Order.prototype.viewMenu = function() {
@@ -26,13 +24,13 @@
     this._customerTable.customers_names = customer_names;
   }
 
-  Order.prototype.addItem = function(quantity, item) {
+  Order.prototype.addItem = function(quantity, item, radix) {
     this._customerOrder.push(quantity + " x " + item + "\n");
 
-    var x = parseInt(quantity);
+    var x = parseInt(quantity, radix);
     for (var i = 0; i < x; ++i) {
       this.addOrderBalance(item)
-    };
+    }
     return this._customerOrder;
   }
 
@@ -48,7 +46,11 @@
   }
 
   Order.prototype.viewOrder = function() {
-    return "Table: " + this._customerTable.number + " / [" + this._customerTable.customers + "]\n" + this._customerTable.customers_names + "\n" + this._customerOrder + "\nTax: " + "$" + this._calculateOrder.returnTaxAmount() + "\nTotal: " + "$" + this._calculateOrder.calculateOrderWithTax();
+    return "Table: " + this._customerTable.number + " / [" +
+    this._customerTable.customers + "]\n" +
+    this._customerTable.customers_names + "\n" + this._customerOrder +
+    "\nTax: " + "$" + this._calculateOrder.returnTaxAmount() + "\nTotal: " +
+    "$" + this._calculateOrder.calculateOrderWithTax();
   }
 
   Order.prototype.makePayment = function(bill, payment) {
@@ -57,15 +59,16 @@
 
   Order.prototype.submitOrder = function(bill, payment) {
     this.makePayment(bill, payment);
-    var customerOrderOutput = "";
+    var customerOrderOutput = ""
     if (this._customerOrder.length != 0  || this.makePayment() != false) {
       for (var i = 0; i < this._customerOrder.length; i++) {
          customerOrderOutput += this._customerOrder[i];
-      };
+      }
     return this.viewReceipt(customerOrderOutput);
     } else {
-      return 'Error: Please review your order. You have either not added any items to your order or your payment was not successful'
-    };
+      return 'Error: Please review your order. You have either not added any' +
+      ' items to your order or your payment was not successful'
+    }
   }
 
   Order.prototype.viewReceipt = function(customerOrderOutput) {
