@@ -71,7 +71,7 @@
     return this._payment.processPayment(bill, payment);
   }
 
-  Order.prototype.paymentSuccessfull = function(bill, payment) {
+  Order.prototype.paymentSuccessfull = function() {
     return this._payment.returnPaymentStatus();
   }
 

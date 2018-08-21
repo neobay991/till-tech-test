@@ -30,8 +30,8 @@ describe("Unit Test: ", function () {
       it('Returns a balance for an order', function() {
         calculateOrder.calculate.and.returnValue(9.3);
         calculateOrder.calculateOrderWithTax.and.returnValue(10.1);
-        order.addOrderBalance('"Cafe Latte": 4.75')
-        expect(order.addOrderBalance('"Cortado": 4.55')).toEqual(10.1);
+        order.addOrderBalance('Cafe Latte 4.75')
+        expect(order.addOrderBalance('Cortado 4.55')).toEqual(10.1);
       });
     });
 
@@ -40,8 +40,8 @@ describe("Unit Test: ", function () {
         calculateOrder.returnTaxAmount.and.returnValue(0.41);
         calculateOrder.calculateOrderWithTax.and.returnValue(5.16);
         order.addTable(1, 1, "Jane");
-        order.addItem(1, '"Cafe Latte": 4.75');
-        expect(order.viewOrder()).toEqual('Table: 1 / [1]\nJane\n1 x "Cafe Latte": 4.75\n\nTax: $0.41\nTotal: $5.16');
+        order.addItem(1, 'Cafe Latte 4.75');
+        expect(order.viewOrder()).toEqual('Table: 1 / [1]\nJane\n1 x Cafe Latte 4.75\n\nTax: $0.41\nTotal: $5.16');
       });
     });
 
@@ -68,7 +68,7 @@ describe("Unit Test: ", function () {
         var customerTableNumber = '1'
         var customerTableCustomers = '2';
         var customerTableCustomersNames = 'Jane, John'
-        var customerOrder = '1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n'
+        var customerOrder = '1 x Cafe Latte 4.75\n2 x Chocolate Chip Muffin 4.05\n'
         var customerOrderTax = 1.11;
         var customerOrderWithTax = 13.96;
         var customerPayment = 15.00;
@@ -79,7 +79,7 @@ describe("Unit Test: ", function () {
         "\n" + "Cash: " + customerPayment + "\nChange: " + "$" + customerPaymentChange + "\n" + menuFooter;
         payment.returnPaymentStatus.and.returnValue(true);
         receipt.getReceipt.and.returnValue(receiptOutput);
-        expect(order.submitOrder(13.96, 15.00)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
+        expect(order.submitOrder(13.96, 15.00)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x Cafe Latte 4.75\n2 x Chocolate Chip Muffin 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
       });
 
       it('Throws an error if there is no item in the order basket', function() {
