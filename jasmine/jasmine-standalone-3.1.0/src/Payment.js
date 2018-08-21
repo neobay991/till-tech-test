@@ -28,3 +28,15 @@ Payment.prototype.change = function(payment, bill) {
   this._customerPaymentChange = Number(parseFloat(payment - bill).toFixed(2));
   return this._customerPaymentChange;
 }
+
+Payment.prototype.returnPaymentSuccessfull = function() {
+  return this._customerPaymentProcessed;
+}
+
+Payment.prototype.returnPayment = function() {
+  return this._customerPayment;
+}
+
+Payment.prototype.returnChange = function() {
+  return this._customerPaymentChange;
+}

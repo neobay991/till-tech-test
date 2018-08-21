@@ -39,8 +39,7 @@ describe("Feature Test: ", function () {
       order.addItem(1, '"Cafe Latte": 4.75');
       order.addItem(2, '"Chocolate Chip Muffin": 4.05');
       order.viewOrder();
-      order.makePayment(13.96, 15.00);
-      expect(order.submitOrder()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
+      expect(order.submitOrder(13.96, 15.00)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
     });
   });
 
@@ -49,19 +48,17 @@ describe("Feature Test: ", function () {
       order.addTable(1, 2, "Jane, John");
       order.addItem(1, '"Cafe Latte": 4.75');
       order.addItem(2, '"Chocolate Chip Muffin": 4.05');
-      order.makePayment(13.96, 15.00);
       expect(order.submitOrder(13.96, 15.00)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
     });
 
     it('A User cannot submit an order if there is no item in the order basket', function() {
-      expect(order.submitOrder(13.96, 15.00)).toEqual('Error: Please review your order. You have either not added any items to your order or your payment was not successful');
+      expect(order.submitOrder()).toEqual('Error: Please review your order. You have either not added any items to your order or your payment was not successful');
     });
 
-    xit('A User cannot submit an order if there is no item in the order basket222', function() {
+    it('A User cannot submit an order if there is no item in the order basket222', function() {
       order.addTable(1, 2, "Jane, John");
       order.addItem(1, '"Cafe Latte": 4.75');
       order.addItem(2, '"Chocolate Chip Muffin": 4.05');
-      order.makePayment(1, 0);
       expect(order.submitOrder(10, 5)).toEqual('Error: Please review your order. You have either not added any items to your order or your payment was not successful');
     });
   });

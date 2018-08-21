@@ -53,14 +53,10 @@
     "$" + this._calculateOrder.calculateOrderWithTax();
   }
 
-  Order.prototype.makePayment = function(bill, payment) {
-    return this._payment.processPayment(bill, payment);
-  }
-
   Order.prototype.submitOrder = function(bill, payment) {
     this.makePayment(bill, payment);
     var customerOrderOutput = ""
-    if (this._customerOrder.length != 0  || this.makePayment() != false) {
+    if (this._customerOrder.length != 0 || this.makePayment(bill, payment) != false) {
       for (var i = 0; i < this._customerOrder.length; i++) {
          customerOrderOutput += this._customerOrder[i];
       }
@@ -71,12 +67,21 @@
     }
   }
 
+  Order.prototype.makePayment = function(bill, payment) {
+    return this._payment.processPayment(bill, payment);
+  }
+
   Order.prototype.viewReceipt = function(customerOrderOutput) {
-    return this._receipt.getReceipt(this._menu.getMenuHeader(),
-    this._customerTable.number, this._customerTable.customers,
-    this._customerTable.customers_names, customerOrderOutput,
-    this._calculateOrder.returnTaxAmount(),
-    this._calculateOrder.calculateOrderWithTax(),
-    this._payment._customerPayment, this._payment._customerPaymentChange,
-    this._menu.getMenuFooter());
+    if (this._payment.returnPaymentSuccessfull() === true) {
+      return this._receipt.getReceipt(this._menu.getMenuHeader(),
+      this._customerTable.number, this._customerTable.customers,
+      this._customerTable.customers_names, customerOrderOutput,
+      this._calculateOrder.returnTaxAmount(),
+      this._calculateOrder.calculateOrderWithTax(),
+      this._payment.returnPayment(), this._payment.returnChange(),
+      this._menu.getMenuFooter());
+    } else {
+      return 'Error: Please review your order. You have either not added any' +
+      ' items to your order or your payment was not successful'
+    }
   }
