@@ -74,23 +74,23 @@ Table: 1 / [2] <br />
 Jane, John <br />
 1 x Cafe Latte: 4.75 <br />
 ,2 x Chocolate Chip Muffin: 4.05 <br />
-__
-Tax: $1.11__
-Total: $13.96__
+<br />
+Tax: $1.11 <br />
+Total: $13.96 <br />
 
 * order.submitOrder(bill, payment) - submit your order with payment e.g. order.submitOrder(13.96, 15.00). View receipt e.g. output:
-The Coffee Connection
-
-123 Lakeside Way
-Phone: +1 (650) 360-0708
-
-Table: 1 / [2]
-Jane, John
-1 x Cafe Latte: 4.75
-2 x Chocolate Chip Muffin: 4.05
-
-Tax $1.11
-Total: $13.96
-Cash: 15
-Change: $1.04
-Thank you!
+The Coffee Connection <br />
+<br />
+123 Lakeside Way <br />
+Phone: +1 (650) 360-0708 <br />
+<br />
+Table: 1 / [2] <br />
+Jane, John <br />
+1 x Cafe Latte: 4.75 <br />
+2 x Chocolate Chip Muffin: 4.05 <br />
+<br />
+Tax $1.11 <br />
+Total: $13.96 <br />
+Cash: 15 <br />
+Change: $1.04 <br />
+Thank you! <br />
