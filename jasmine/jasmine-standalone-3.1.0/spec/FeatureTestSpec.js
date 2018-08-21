@@ -16,13 +16,13 @@ describe("Feature Test: ", function () {
   });
 
   describe('View menu', function(){
-    it('A User can view a menu to order food from', function() {
+    it('A User can view a menu to order from', function() {
       expect(order.viewMenu()).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n \n{"Cafe Latte":4.75,"Flat White":4.75,"Cappucino":3.85,"Single Espresso":2.05,"Double Espresso":3.75,"Americano":3.75,"Cortado":4.55,"Tea":3.65,"Choc Mudcake":6.4,"Choc Mousse":8.2,"Affogato":14.8,"Tiramisu":11.4,"Blueberry Muffin":4.05,"Chocolate Chip Muffin":4.05,"Muffin Of The Day":4.55}');
     });
   });
 
   describe('View order', function(){
-    it('A User can add users, quatity and view their order', function() {
+    it('A User can add friends, quatity and view their order', function() {
       order.addTable(1, 2, "Jane, John");
       order.addItem(1, '"Cafe Latte": 4.75');
       order.addItem(2, '"Chocolate Chip Muffin": 4.05');
@@ -52,7 +52,7 @@ describe("Feature Test: ", function () {
       expect(order.submitOrder()).toEqual('Error: Please review your order. You have either not added any items to your order or your payment was not successful');
     });
 
-    it('A User cannot submit an order if there is no item in the order basket222', function() {
+    it('A User cannot submit an order if the payment is less than the order total', function() {
       order.addTable(1, 2, "Jane, John");
       order.addItem(1, '"Cafe Latte": 4.75');
       order.addItem(2, '"Chocolate Chip Muffin": 4.05');

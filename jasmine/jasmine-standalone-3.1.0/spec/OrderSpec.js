@@ -8,10 +8,13 @@ describe("Unit Test: ", function () {
   var payment;
 
   beforeEach(function(){
-    menu = jasmine.createSpyObj('Menu', ['getMenu', 'getMenuHeader', 'getMenuFooter']);
-    calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate', 'calculateOrderWithTax', 'returnTaxAmount']);
+    menu = jasmine.createSpyObj('Menu', ['getMenu', 'getMenuHeader',
+    'getMenuFooter']);
+    calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate',
+    'calculateOrderWithTax', 'returnTaxAmount']);
     receipt = jasmine.createSpyObj('Receipt', ['getReceipt']);
-    payment = jasmine.createSpyObj('Payment', ['savePayment', 'change', 'processPayment', 'returnPayment', 'returnChange', 'returnPaymentStatus']);
+    payment = jasmine.createSpyObj('Payment', ['savePayment', 'change',
+    'processPayment', 'returnPayment', 'returnChange', 'returnPaymentStatus']);
     order = new Order(menu, calculateOrder, receipt, payment);
   });
 
