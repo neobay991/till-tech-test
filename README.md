@@ -69,7 +69,7 @@ Browser console commands:
 to create a new Order object that also initializes several other objects
 * order.addTable(table_no, total_customers, customer_names); - get a table e.g. order.addTable(1, 2, "Jane, John");;
 * order.addItem(quantity, item); - add an item to your order e.g. order.addItem(1, 'Cafe Latte: 4.75');
-* order.viewOrder(); - view your order e.g. output: <br />
+* order.viewOrder(); - view your order e.g. output: <br /><br />
 Table: 1 / [2] <br />
 Jane, John <br />
 1 x Cafe Latte: 4.75 <br />
@@ -78,7 +78,7 @@ Jane, John <br />
 Tax: $1.11 <br />
 Total: $13.96 <br />
 <br />
-* order.submitOrder(bill, payment) - submit your order with payment e.g. order.submitOrder(13.96, 15.00). View receipt e.g. output: <br />
+* order.submitOrder(bill, payment) - submit your order with payment e.g. order.submitOrder(13.96, 15.00). View receipt e.g. output: <br /><br />
 The Coffee Connection <br />
 <br />
 123 Lakeside Way <br />
