@@ -8,9 +8,6 @@ describe("Feature Test: ", function () {
   var payment;
 
   beforeEach(function(){
-    // menu = jasmine.createSpyObj('Menu', ['getMenu', 'getMenuHeader', 'getMenuFooter']);
-    // calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate', 'calculateOrderWithTax', 'returnTaxAmount']);
-    // receipt = jasmine.createSpyObj('Receipt', ['getReceipt']);
     menu = new Menu();
     calculateOrder = new CalculateOrder();
     receipt = new Receipt();

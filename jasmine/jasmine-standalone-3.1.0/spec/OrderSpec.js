@@ -11,9 +11,10 @@ describe("Unit Test: ", function () {
     menu = jasmine.createSpyObj('Menu', ['getMenu', 'getMenuHeader', 'getMenuFooter']);
     calculateOrder = jasmine.createSpyObj('CalculateOrder', ['calculate', 'calculateOrderWithTax', 'returnTaxAmount']);
     receipt = jasmine.createSpyObj('Receipt', ['getReceipt']);
-    payment = jasmine.createSpyObj('Payment', ['savePayment', 'change', 'processPayment', 'returnPayment', 'returnChange', 'returnPaymentSuccessfull']);
+    payment = jasmine.createSpyObj('Payment', ['savePayment', 'change', 'processPayment', 'returnPayment', 'returnChange', 'returnPaymentStatus']);
     order = new Order(menu, calculateOrder, receipt, payment);
   });
+
   describe('Order', function(){
     describe('#viewMenu', function(){
       it('Prints out a Menu', function() {
@@ -73,7 +74,7 @@ describe("Unit Test: ", function () {
         var receiptOutput = menuHeader + "\n\n" + "Table: " + customerTableNumber + " / [" + customerTableCustomers + "]\n" + customerTableCustomersNames + "\n" + customerOrder + "\n" + "Tax " + "$" +
         customerOrderTax + "\n" + "Total: " + "$" +  customerOrderWithTax +
         "\n" + "Cash: " + customerPayment + "\nChange: " + "$" + customerPaymentChange + "\n" + menuFooter;
-        payment.returnPaymentSuccessfull.and.returnValue(true);
+        payment.returnPaymentStatus.and.returnValue(true);
         receipt.getReceipt.and.returnValue(receiptOutput);
         expect(order.submitOrder(13.96, 15.00)).toEqual('The Coffee Connection\n\n123 Lakeside Way\nPhone: +1 (650) 360-0708\n\nTable: 1 / [2]\nJane, John\n1 x "Cafe Latte": 4.75\n2 x "Chocolate Chip Muffin": 4.05\n\nTax $1.11\nTotal: $13.96\nCash: 15\nChange: $1.04\nThank you!');
       });

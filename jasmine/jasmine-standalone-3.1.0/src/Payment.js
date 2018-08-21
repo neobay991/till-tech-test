@@ -29,7 +29,7 @@ Payment.prototype.change = function(payment, bill) {
   return this._customerPaymentChange;
 }
 
-Payment.prototype.returnPaymentSuccessfull = function() {
+Payment.prototype.returnPaymentStatus = function() {
   return this._customerPaymentProcessed;
 }
 

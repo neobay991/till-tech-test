@@ -19,7 +19,8 @@ CalculateOrder.prototype.calculateTax = function(orderTotal) {
 };
 
 CalculateOrder.prototype.calculateOrderWithTax = function() {
-  this.orderTotalWithTax = Number(parseFloat(this._orderTotal + this._orderTax).toFixed(2));
+  this.orderTotalWithTax = Number(parseFloat(this._orderTotal +
+  this._orderTax).toFixed(2));
   return this.orderTotalWithTax;
 };
 

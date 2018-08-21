@@ -71,8 +71,12 @@
     return this._payment.processPayment(bill, payment);
   }
 
+  Order.prototype.paymentSuccessfull = function(bill, payment) {
+    return this._payment.returnPaymentStatus();
+  }
+
   Order.prototype.viewReceipt = function(customerOrderOutput) {
-    if (this._payment.returnPaymentSuccessfull() === true) {
+    if (this.paymentSuccessfull() === true) {
       return this._receipt.getReceipt(this._menu.getMenuHeader(),
       this._customerTable.number, this._customerTable.customers,
       this._customerTable.customers_names, customerOrderOutput,
