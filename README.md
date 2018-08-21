@@ -70,10 +70,10 @@ to create a new Order object that also initializes several other objects
 * order.addTable(table_no, total_customers, customer_names); - get a table e.g. order.addTable(1, 2, "Jane, John");;
 * order.addItem(quantity, item); - add an item to your order e.g. order.addItem(1, 'Cafe Latte: 4.75');
 * order.viewOrder(); - view your order e.g. output:
-Table: 1 / [2]__
-Jane, John__
-1 x Cafe Latte: 4.75__
-,2 x Chocolate Chip Muffin: 4.05__
+Table: 1 / [2] <br />
+Jane, John <br />
+1 x Cafe Latte: 4.75 <br />
+,2 x Chocolate Chip Muffin: 4.05 <br />
 __
 Tax: $1.11__
 Total: $13.96__
