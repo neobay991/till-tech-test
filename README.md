@@ -64,7 +64,7 @@ Instructions to Start
 * navigation to `[local:host]:///jasmine/jasmine-standalone-3.1.0/SpecRunner.html` e.g. `http://localhost:8081/jasmine/jasmine-standalone-3.1.0/SpecRunner.html`
 * You can now run the tests and also use the same window's browser's console to interact with the app
 
-**To install http-server:** In Terminal, type `npm install http-server -g)`, this will install http-server globally.
+**To install http-server:** In Terminal, type `npm install http-server -g`, this will install http-server globally.
 
 Browser console commands:
 * `order = new Order(menu = new Menu, calculateOrder = new CalculateOrder, receipt = new Receipt, payment = new Payment);`
@@ -75,7 +75,7 @@ to create a new Order object that also initializes several other objects
 * `order.viewOrder();`
 * `order.submitOrder(bill, payment);` - submit your order with payment e.g. `order.submitOrder(13.96, 15.00);`
 
-View receipt e.g. output: <br /><br />
+View receipt e.g. output: <br />
 
 ```
 The Coffee Connection
