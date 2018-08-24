@@ -24,21 +24,21 @@ So I can come back again next time :-)
 
 As a Product Owner
 I would like the order total to include tax
-So I can comply with law
+So I can comply with the law
 
 As a Product Owner
 I would like the receipt to look like the sample specification
-So I can sell tills to the local (and other) hipster coffee shop
+So I can sell tills to the local (and other) hipster coffee shops
 
 
 Version 2
 As a User
 I would like the receipt to show my payment amount
-So I have proof I made the payment
+So I have proof I have paid my bill
 
 As a User
 I would like the receipt to show any change due to me
-So I know how much change I am due
+So I know how much change I am going to get back
 
 ```
 
@@ -60,17 +60,20 @@ Tech stack
 Instructions to Start
 -------
 * Clone the repo
-* Open Terminal and run http-server
-* navigation to ''[local:host]:///jasmine/jasmine-standalone-3.1.0/SpecRunner.html' e.g. http://localhost:8081/jasmine/jasmine-standalone-3.1.0/SpecRunner.html
+* Open Terminal and `run http-server`
+* navigation to `[local:host]:///jasmine/jasmine-standalone-3.1.0/SpecRunner.html` e.g. `http://localhost:8081/jasmine/jasmine-standalone-3.1.0/SpecRunner.html`
 * You can now run the tests and also use the same window's browser's console to interact with the app
 
 Browser console commands:
 * order = new Order(menu = new Menu, calculateOrder = new CalculateOrder, receipt = new Receipt, payment = new Payment);
 to create a new Order object that also initializes several other objects
-* order.addTable(table_no, total_customers, customer_names); - get a table e.g. order.addTable(1, 2, "Jane, John");;
+* order.addTable(table_no, total_customers, customer_names); - get a table e.g. order.addTable(1, 2, 'Jane, John');
 * order.addItem(quantity, item); - add an item to your order e.g. order.addItem(1, 'Cafe Latte: 4.75');
+order.addItem(2, 'Chocolate Chip Muffin: 4.05');
 * order.viewOrder();
-* order.submitOrder(bill, payment) - submit your order with payment e.g. order.submitOrder(13.96, 15.00). View receipt e.g. output: <br /><br />
+* order.submitOrder(bill, payment); - submit your order with payment e.g. order.submitOrder(13.96, 15.00);
+
+View receipt e.g. output: <br /><br />
 
 
 The Coffee Connection <br />
