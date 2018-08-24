@@ -47,7 +47,7 @@ Features not implemented
 ```
 
 * Version 2 - Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
-* Version 3
+* Version 3 - Implement a user interface that can actually be used as a till
 
 ```
 
@@ -60,9 +60,11 @@ Tech stack
 Instructions to Start
 -------
 * Clone the repo
-* Open Terminal and `run http-server`
+* Open Terminal and type `run http-server`
 * navigation to `[local:host]:///jasmine/jasmine-standalone-3.1.0/SpecRunner.html` e.g. `http://localhost:8081/jasmine/jasmine-standalone-3.1.0/SpecRunner.html`
 * You can now run the tests and also use the same window's browser's console to interact with the app
+
+**To install http-server:** In Terminal, type `npm install http-server -g)`, this will install http-server globally.
 
 Browser console commands:
 * `order = new Order(menu = new Menu, calculateOrder = new CalculateOrder, receipt = new Receipt, payment = new Payment);`
