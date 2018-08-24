@@ -75,7 +75,8 @@ to create a new Order object that also initializes several other objects
 
 View receipt e.g. output: <br /><br />
 
-`The Coffee Connection
+```
+The Coffee Connection
 
 123 Lakeside Way
 Phone: +1 (650) 360-0708
@@ -89,4 +90,5 @@ Tax $1.11
 Total: $13.96
 Cash: 15
 Change: $1.04
-Thank you!`
+Thank you!
+```
